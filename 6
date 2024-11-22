@@ -1,0 +1,9 @@
+When the user clicks on the chat history, the system should read the file containing the filtered output. However, when the user sends a message, and the chat history is sent back to the backend, it should read from the unfiltered output.
+
+In line 1383, inputs["conversation_history"][-7:], we are sending detailed conversation history.
+
+We need to verify whether the system is working with the original output or the filtered output. To achieve this, we need to maintain two tracks:
+
+One track should handle the filtered output.
+The other track should handle the unfiltered output.
+When the user is reading from the chat history, it should display the filtered output. However, when sending the data back to the backend, it should use the filtered output accordingly.
