@@ -1,0 +1,20 @@
+import subprocess
+
+# Define the input PDF file and the output text file
+input_pdf = "example.pdf"
+output_txt = "output.txt"
+
+# Run the pdftotext command
+try:
+    subprocess.run(["pdftotext", input_pdf, output_txt], check=True)
+    print(f"Text successfully extracted to {output_txt}")
+    
+    # Read and print the extracted text
+    with open(output_txt, "r", encoding="utf-8") as file:
+        text = file.read()
+        print("Extracted Text:\n")
+        print(text)
+except FileNotFoundError:
+    print("Error: pdftotext not found. Ensure it is installed and added to PATH.")
+except subprocess.CalledProcessError as e:
+    print(f"Error occurred while running pdftotext: {e}")
